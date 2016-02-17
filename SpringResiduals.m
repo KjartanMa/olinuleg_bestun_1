@@ -1,11 +1,12 @@
 function [residual] = SpringResiduals(input)
-%SpringResiduals Calculate residual vector for the spring problem.
-%   Calculates the residual matrixes for the spring problem by using the
-%   equations Aid = T^-1AT, Bid = T^-1B and Cid = C*T.
+%SpringResiduals Residual vector for the spring problem.
+%   Calculates the residual matrixes for the
+%   spring-mass-damper system by using the equations:
+%   Aid = T^-1AT, Bid = T^-1B and Cid = C*T.
 %
 %   Input:
-%       Vector containing the entries of the 2x2 T matrix, as well as
-%       the values of the Theta vector.
+%       Vector containing the entries of the T matrix,
+%       as well as the values of the theta vector.
 %
 %   Output:
 %       The residual vector.
@@ -23,7 +24,7 @@ C = [1 0];
 Ax = T*Aid - A*T;
 Bx = T*Bid - B;
 Cx = Cid - C*T;
-% Setup the vector of the explicit residuals.s
+% Create the residual vector.
 residual = [ Ax(1, 1); Ax(1, 2); Ax(2, 1); Ax(2, 2);...
              Bx(1); Bx(2);...
              Cx(1); Cx(2)];
